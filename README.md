@@ -3,8 +3,6 @@
 An Amazon-style e-commerce product listing application built with **React +
 Vite + Tailwind CSS**, using the public [DummyJSON Products API](https://dummyjson.com/docs/products).
 
-Built for the Leegality Frontend Engineer assessment.
-
 ## ✨ Features
 
 - **Product Listing Page** — filters on the left, responsive product grid on the
@@ -59,15 +57,6 @@ src/
   main.jsx                 # entry + Router
 ```
 
-## 🔌 API Usage
-
-| Purpose            | Endpoint                                   |
-| ------------------ | ------------------------------------------ |
-| All products       | `GET /products?limit=0`                    |
-| Categories         | `GET /products/categories`                 |
-| Products by category | `GET /products/category/{slug}?limit=0`  |
-| Single product     | `GET /products/{id}`                       |
-
 ## 🧠 Architectural Decisions
 
 - **Filters stored in the URL query string** (`?category=&minPrice=&maxPrice=&brands=&page=`).
@@ -105,12 +94,3 @@ src/
 - Unit & integration tests (Vitest + React Testing Library).
 - Caching fetched categories/products to avoid refetching.
 - Persisted scroll position when returning from the detail page.
-
-## ✅ Verification
-
-Verified by running the app and rendering it headlessly:
-
-- Listing renders all 194 products with titles, prices, and ratings.
-- Category filter via URL (`?category=smartphones`) correctly narrows results.
-- Pagination shows the right counts ("Showing 1–12 of N products").
-- Detail page (`/product/:id`) renders all required fields with a working Back button.
