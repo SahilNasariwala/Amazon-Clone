@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { getProducts, getByCategory } from '../api/products.js'
 
-// Fetches the product set for the active category scope.
-// Empty category => all products. Refetches when category changes
-// or when refetch() is called (e.g. error retry).
 export function useProducts(category) {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)

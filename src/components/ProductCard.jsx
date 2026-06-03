@@ -3,7 +3,6 @@ import StarRating from './StarRating.jsx'
 
 export default function ProductCard({ product }) {
   const location = useLocation()
-  // Preserve the current filters (query string) so Back returns to them.
   const to = {
     pathname: `/product/${product.id}`,
     state: { from: location.pathname + location.search },

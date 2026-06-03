@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getCategories } from '../api/products.js'
 
-// DummyJSON returns category objects { slug, name, url }.
-// Older shapes returned plain strings; normalize to be safe.
 function normalizeCategory(c) {
   if (typeof c === 'string') return { slug: c, name: c }
   return { slug: c.slug, name: c.name || c.slug }
@@ -13,7 +11,6 @@ export default function FilterPanel({ filters, brands, onChange, onClear }) {
   const [catError, setCatError] = useState(null)
   const [catSearch, setCatSearch] = useState('')
 
-  // Local draft for the price range — committed via the Apply button.
   const [minPrice, setMinPrice] = useState(filters.minPrice)
   const [maxPrice, setMaxPrice] = useState(filters.maxPrice)
 
@@ -34,7 +31,6 @@ export default function FilterPanel({ filters, brands, onChange, onClear }) {
     }
   }, [])
 
-  // Single-select category (checkbox UI). Clicking the active one clears it.
   const selectCategory = (slug) =>
     onChange({ category: filters.category === slug ? '' : slug })
 
@@ -50,7 +46,6 @@ export default function FilterPanel({ filters, brands, onChange, onClear }) {
 
   return (
     <aside className="w-full shrink-0 rounded-lg border border-gray-200 bg-white p-4 lg:w-60">
-      {/* Sidebar search — filters the category list */}
       <div className="mb-4 flex items-center rounded-md border border-gray-300 px-2 py-1.5">
         <svg className="h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="11" cy="11" r="7" />
@@ -65,7 +60,6 @@ export default function FilterPanel({ filters, brands, onChange, onClear }) {
         />
       </div>
 
-      {/* Categories */}
       <section className="mb-5">
         <h3 className="mb-2 text-sm font-semibold text-gray-800">Categories</h3>
         {catError ? (
@@ -90,7 +84,6 @@ export default function FilterPanel({ filters, brands, onChange, onClear }) {
         )}
       </section>
 
-      {/* Price Range */}
       <section className="mb-5">
         <h3 className="mb-2 text-sm font-semibold text-gray-800">Price Range</h3>
         <div className="flex items-center gap-2">
@@ -119,7 +112,6 @@ export default function FilterPanel({ filters, brands, onChange, onClear }) {
         </button>
       </section>
 
-      {/* Brands */}
       <section>
         <h3 className="mb-2 text-sm font-semibold text-gray-800">Brands</h3>
         {brands.length === 0 ? (

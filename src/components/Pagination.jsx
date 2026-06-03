@@ -3,7 +3,6 @@ export default function Pagination({ page, totalPages, onChange }) {
 
   const go = (p) => onChange(Math.min(Math.max(1, p), totalPages))
 
-  // Compact window of page numbers around the current page.
   const pages = []
   const end = Math.min(totalPages, Math.max(page + 2, 4))
   for (let p = Math.max(1, end - 3); p <= end; p++) pages.push(p)

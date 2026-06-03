@@ -9,7 +9,6 @@ export default function Layout() {
 
   const search = searchParams.get('search') || ''
 
-  // Header search filters products by title. Always lands on the listing.
   const onSearch = (value) => {
     const next = new URLSearchParams(searchParams)
     value ? next.set('search', value) : next.delete('search')

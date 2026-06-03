@@ -1,4 +1,3 @@
-// Gold 5-star display with the numeric rating in parentheses, e.g. ★★★★☆ (4.5)
 export default function StarRating({ rating, className = 'text-xs' }) {
   const value = Number(rating) || 0
   const filled = Math.round(value)

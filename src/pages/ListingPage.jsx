@@ -15,14 +15,12 @@ export default function ListingPage() {
   const { filters, updateFilters, clearFilters } = useFilters()
   const { products, loading, error, refetch } = useProducts(filters.category)
 
-  // Brands available in the current category scope (derived dynamically).
   const brands = useMemo(() => {
     const set = new Set()
     for (const p of products) if (p.brand) set.add(p.brand)
     return [...set].sort((a, b) => a.localeCompare(b))
   }, [products])
 
-  // Apply search + price + brand filters client-side.
   const filtered = useMemo(() => {
     const min = filters.minPrice !== '' ? Number(filters.minPrice) : -Infinity
     const max = filters.maxPrice !== '' ? Number(filters.maxPrice) : Infinity
@@ -36,7 +34,6 @@ export default function ListingPage() {
     })
   }, [products, filters.minPrice, filters.maxPrice, filters.brands, filters.search])
 
-  // Client-side pagination over the filtered result.
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
   const page = Math.min(filters.page, totalPages)
   const pageItems = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)

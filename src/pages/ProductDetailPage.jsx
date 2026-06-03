@@ -26,8 +26,6 @@ export default function ProductDetailPage() {
     }
   }, [id])
 
-  // Return to the listing with filters intact. Prefer the explicit
-  // origin (passed via card link state); fall back to browser history.
   const goBack = () => {
     const from = location.state?.from
     if (from) navigate(from)
@@ -57,7 +55,6 @@ export default function ProductDetailPage() {
     <div>
       <BackButton />
       <div className="grid gap-8 rounded-lg border border-gray-200 bg-white p-6 md:grid-cols-2">
-        {/* Image panel */}
         <div>
           <div className="flex h-80 items-center justify-center rounded-lg bg-navy p-6">
             <img
@@ -80,7 +77,6 @@ export default function ProductDetailPage() {
           )}
         </div>
 
-        {/* Details */}
         <div className="flex flex-col">
           <h1 className="text-2xl font-bold text-gray-900">{product.title}</h1>
 
